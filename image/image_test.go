@@ -35,3 +35,15 @@ func TestResize(t *testing.T) {
 	assert.NotNil(t, f)
 	assert.Nil(t, err)
 }
+
+func TestGenerate(t *testing.T) {
+	before()
+	defer after()
+
+	fileName := "test.txt"
+	GenerateTextToImage(fileName, path.Join(setting.GetDirectory().Path, fileName))
+
+	f, err := os.Stat(path.Join(ImagePath(), "out.png"))
+	assert.NotNil(t, f)
+	assert.Nil(t, err)
+}
